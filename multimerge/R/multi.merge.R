@@ -32,9 +32,9 @@ multi.merge <- function(DFlist,
 
     # DFlist should be a list, and this function will return the merged of all the dfs in list
 
-    stopifnot("The dataframes should be in a list." = is.list(DFlist))
+    stopifnot("The dataframes are bundled in a list." = is.list(DFlist))
 
-    # type can be either union (all = TRUE), intersection (all = FALSE), left (all.x =TRUE) or right (all.y =TRUE)
+    # The merge type can be either union (all = TRUE), intersection (all = FALSE), left (all.x =TRUE) or right (all.y =TRUE)
     # type can be one of these: "intersect", "left", "right", "union"
 
     types = c("intersect", "left", "right", "union")
