@@ -46,10 +46,10 @@ multi.merge <- function(DFlist,
     type = tolower(trimws(type))
     print(paste0("Given merge type is: ", type))
 
-    #check whether the options are valid
+    #check whether the option is valid
     if (tolower(type) %notin% types) {
         warning("\nMerge type is ambiguous; using 'grep' to match the closest
-                possible value; please be careful\n")
+                possible value; please check the results\n")
 
         type = grep(tolower(type), types, value = TRUE)
         print(paste0("The possible type of merge is: ", type))
@@ -59,7 +59,6 @@ multi.merge <- function(DFlist,
     if (length(type) == 0 ) {
         stop("Type is not understandable, please provide the correct merge type")
     }
-
 
     if ( tolower(type) == "intersect") {
         df = base::Reduce(function(x,y) base::merge(x, y, all = FALSE, by = byCol, sort = FALSE, allow.cartesian=TRUE ), DFlist)
