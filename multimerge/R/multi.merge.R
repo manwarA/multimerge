@@ -42,6 +42,10 @@ multi.merge <- function(DFlist,
     # There is no function that is opposite to "%in%", but you can conveniently negate the original to get the desired output
     `%notin%` = Negate(`%in%`)
 
+    if (length(type) == 0 ) {
+        stop("Type is not understandable, please provide the correct merge type")
+    }
+
     # convert the type argument into lower case
     type = tolower(trimws(type))
     message(paste0("Given merge type is: ", type))
@@ -55,10 +59,6 @@ multi.merge <- function(DFlist,
         print(paste0("The possible type of merge is: ", type))
         #print(length(type))
     } #else {
-
-    if (length(type) == 0 ) {
-        stop("Type is not understandable, please provide the correct merge type")
-    }
 
     if ( tolower(type) == "intersect") {
         df = base::Reduce(function(x,y) base::merge(x, y, all = FALSE, by = byCol, sort = FALSE, allow.cartesian=TRUE ), DFlist)
