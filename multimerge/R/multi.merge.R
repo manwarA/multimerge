@@ -46,7 +46,7 @@ multi.merge <- function(DFlist,
     type = tolower(trimws(type))
 
     if (length(type) == 0 ) {
-        stop("Type is not understandable, please provide the correct merge type")
+        stop("The "Type" argument is not understandable, please provide the correct merge type")
     } else {
     message(paste0("Given merge type is: ", type))
           }
