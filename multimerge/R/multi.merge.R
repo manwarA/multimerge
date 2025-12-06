@@ -44,7 +44,7 @@ multi.merge <- function(DFlist,
 
     # convert the type argument into lower case
     type = tolower(trimws(type))
-    print(paste0("Given merge type is: ", type))
+    message(paste0("Given merge type is: ", type))
 
     #check whether the option is valid
     if (tolower(type) %notin% types) {
