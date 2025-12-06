@@ -42,14 +42,15 @@ multi.merge <- function(DFlist,
     # There is no function that is opposite to "%in%", but you can conveniently negate the original to get the desired output
     `%notin%` = Negate(`%in%`)
 
-    if (length(type) == 0 ) {
-        stop("Type is not understandable, please provide the correct merge type")
-    }
-
     # convert the type argument into lower case
     type = tolower(trimws(type))
-    message(paste0("Given merge type is: ", type))
 
+    if (length(type) == 0 ) {
+        stop("Type is not understandable, please provide the correct merge type")
+    } else {
+    message(paste0("Given merge type is: ", type))
+          }
+  
     #check whether the option is valid
     if (tolower(type) %notin% types) {
         warning("\nMerge type is ambiguous; using 'grep' to match the closest
