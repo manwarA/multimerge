@@ -52,20 +52,20 @@ multi.merge <- function(DFlist,
           }
   
     #check whether the option is valid
-    if (tolower(type) %notin% types) {
+    if (type %notin% types) {
         warning("\nMerge type is ambiguous; using 'grep' to match the closest
                 possible value; please check the results\n")
 
-        type = grep(tolower(type), types, value = TRUE)
+        type = grep(type, types, value = TRUE)
         print(paste0("The possible type of merge is: ", type))
         #print(length(type))
-    } #else {
+    }
 
-    if ( tolower(type) == "intersect") {
+    if ( type == "intersect") {
         df = base::Reduce(function(x,y) base::merge(x, y, all = FALSE, by = byCol, sort = FALSE, allow.cartesian=TRUE ), DFlist)
-    } else if ( tolower(type) == "left") {
+    } else if ( type == "left") {
         df = base::Reduce(function(x,y) base::merge(x, y, all.x = TRUE, by = byCol, sort = FALSE, allow.cartesian=TRUE ), DFlist)
-    } else if ( tolower(type) == "right") {
+    } else if ( type == "right") {
         df = base::Reduce(function(x,y) base::merge(x, y, all.y = TRUE, by = byCol, sort = FALSE, allow.cartesian=TRUE ), DFlist)
     } else {
         df = base::Reduce(function(x,y) base::merge(x, y, all   = TRUE, by = byCol, sort = FALSE, allow.cartesian=TRUE ), DFlist)
